@@ -9,10 +9,20 @@
 
 int g_size = 4;
 
+
+int ft_convertInt(char *a)
+{
+    int aux;
+
+    aux = a[0] - '0'; //Esto nos permite que caracteres de entre 0 y 9 sean devueltos como numeros enteros, ya que juega con su valor ascii
+
+    return aux;
+}
+
 int main(int args, char **argv)
 {
     //Verifico que la cantidad de argumentos  sea de 16
-    if (args -1 != 16)
+    if (args != 17)
     {
         write(1, "ERROR: Debe de haber 16 numeros con espacios (1 2 3 4 ...)", 58);
         write(1, '\n', 1);
@@ -37,23 +47,34 @@ int main(int args, char **argv)
 
     int board[g_size][g_size]; //Declaramos el tablero con el tamaño 4X4
     
-    int j;
-
-    j = 0;
+   
     i = 0;
     while (i < g_size) //Inicializamos el tablero vacio
     {
+         int j;
+
+        j = 0;
       while (j < g_size)
       {
         board[i][j] = 0;
         j++;
       }
       i++;
-        
     }
-    
+
+    // Imprimir el tablero
+    printf("Tablero inicializado:\n");
+    for (i = 0; i < g_size; i++)
+    {
+        for (int j = 0; j < g_size; j++)
+        {
+            printf("%d ", board[i][j]);
+        }
+        printf("\n");
+    }
 
     return(0);
+
 }
 
 
@@ -68,12 +89,3 @@ int ft_solver()
     
 }
 
-
-int ft_convertInt(char *a)
-{
-    int aux;
-
-    aux = a[0] - '0'; //Esto nos permite que caracteres de entre 0 y 9 sean devueltos como numeros enteros, ya que juega con su valor ascii
-
-    return aux;
-}
